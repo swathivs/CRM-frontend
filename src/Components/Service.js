@@ -9,7 +9,7 @@ import { DataGrid } from '@mui/x-data-grid';
 function Service() {
   const navigate = useNavigate();
   const [services, setService] = useState([]);
-  const [status, setStatus] = useState('created');
+  const [status] = useState('created');
 
   const columns = [
     {
