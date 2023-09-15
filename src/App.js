@@ -1,28 +1,28 @@
-import Dashboard from "./Components/Dashboard";
-import Login from "./Components/Login";
-import { API } from "./General/General";
-import "./App.css";
-import Users from "./Components/Users";
-import Leads from "./Components/Leads";
-import Service from "./Components/Service";
-import Contact from "./Components/Contact";
-import Viewuser from "./Components/Viewuser";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Appbar from "./Components/Appbar";
-import Adduser from "./Components/Adduser";
-import Register from "./Components/Register";
-import Forgotpassword from "./Components/Forgotpassword";
-import Verification from "./Components/Verification";
-import Updatepassword from "./Components/Updatepassword";
-import { useState } from "react";
-import Footer from "./Components/Footer";
-import CreateService from "./Components/DashboardContent/CreateService";
-import ViewWorkflow from "./Components/ViewWorkflow";
+import Dashboard from './Components/Dashboard';
+import Login from './Components/Login';
+import { API } from './General/General';
+import './App.css';
+import Users from './Components/Users';
+import Leads from './Components/Leads';
+import Service from './Components/Service';
+import Contact from './Components/Contact';
+import Viewuser from './Components/Viewuser';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import Appbar from './Components/Appbar';
+import Adduser from './Components/Adduser';
+import Register from './Components/Register';
+import Forgotpassword from './Components/Forgotpassword';
+import Verification from './Components/Verification';
+import Updatepassword from './Components/Updatepassword';
+import { useState } from 'react';
+import Footer from './Components/Footer';
+import CreateService from './Components/DashboardContent/CreateService';
+import ViewWorkflow from './Components/ViewWorkflow';
 
 function App() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const userLogin = () => {
     const loginContent = {
@@ -32,19 +32,19 @@ function App() {
 
     console.log(loginContent);
     fetch(`${API}/login`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(loginContent),
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
       },
     })
       .then((response) => response.json())
       .then((result) => {
-        localStorage.setItem("token", result.token);
-        localStorage.setItem("usertype", result.usertype);
-        localStorage.setItem("firstname", result.firstname);
-        localStorage.setItem("lastname", result.lastname);
-        navigate("/dashboard");
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('usertype', result.usertype);
+        localStorage.setItem('firstname', result.firstname);
+        localStorage.setItem('lastname', result.lastname);
+        navigate('/dashboard');
       });
   };
 
@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      {window.location.pathname != "/" && <Appbar />}
+      {window.location.pathname !== '/' && <Appbar />}
       <div className="crm-content">
         <Routes>
           <Route
@@ -138,11 +138,11 @@ function App() {
           <Route path="/workflow" element={<ViewWorkflow />} />
         </Routes>
       </div>
-      {window.location.pathname != "/" && <Footer />}
+      {window.location.pathname !== '/' && <Footer />}
     </div>
   );
   function ProtectedRoute({ children }) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     return token ? <div>{children}</div> : <Navigate replace to="/" />;
   }
 }

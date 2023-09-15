@@ -1,18 +1,18 @@
-import TextField from "@mui/material/TextField";
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Paper } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { API } from "../General/General";
-import Button from "@mui/material/Button";
-import Radio from "@mui/material/Radio";
-import FormControl from "@mui/material/FormControl";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Person3Icon from "@mui/icons-material/Person3";
-import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+import TextField from '@mui/material/TextField';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Paper } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../General/General';
+import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import FormControl from '@mui/material/FormControl';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Person3Icon from '@mui/icons-material/Person3';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 
 function Viewuser() {
   const navigate = useNavigate();
@@ -21,10 +21,10 @@ function Viewuser() {
 
   const getUserDetails = () => {
     fetch(`${API}/user/userlist/${id}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
-        usertype: localStorage.getItem("usertype"),
+        'x-auth-token': localStorage.getItem('token'),
+        usertype: localStorage.getItem('usertype'),
       },
     })
       .then((response) => response.json())
@@ -33,7 +33,7 @@ function Viewuser() {
       });
   };
 
-  useEffect(() => getUserDetails(), [id]);
+  useEffect(() => getUserDetails());
   return (
     <div>
       <div className="d-flex flex-row justify-content-center align-items-center gap-3 mt-5">
@@ -54,7 +54,7 @@ function Viewuser() {
             <Button
               variant="contained"
               onClick={() => {
-                navigate("/users");
+                navigate('/users');
               }}
             >
               Go Back
@@ -90,7 +90,7 @@ function Viewuser() {
               variant="outlined"
               onChange={(event) => setLastname(event.target.value)}
             />
-          </div>{" "}
+          </div>{' '}
           <FormControl>
             <RadioGroup
               row
@@ -110,7 +110,7 @@ function Viewuser() {
                 control={<Radio />}
                 label="employee"
               />
-              {localStorage.getItem("usertype") !== "admin" && (
+              {localStorage.getItem('usertype') !== 'admin' && (
                 <FormControlLabel
                   disabled
                   value="admin"
@@ -120,7 +120,7 @@ function Viewuser() {
               )}
             </RadioGroup>
           </FormControl>
-          <div className="col-6"></div>{" "}
+          <div className="col-6"></div>{' '}
           <div className="d-flex flex-row align-items-center justify-content-center">
             <label className="col-5">Extension</label>
             <div className="col-6">
@@ -142,19 +142,19 @@ function Viewuser() {
                   Extn: Extn,
                 };
                 fetch(`${API}/edituser/${user._id}`, {
-                  method: "PUT",
+                  method: 'PUT',
                   body: JSON.stringify(updatedUser),
                   headers: {
-                    "Content-type": "application/json",
-                    "x-auth-token": localStorage.getItem("token"),
+                    'Content-type': 'application/json',
+                    'x-auth-token': localStorage.getItem('token'),
                   },
                 })
                   .then((response) => {
                     response.json();
                   })
                   .then(() => {
-                    alert("User Updated Successfully");
-                    navigate("/users");
+                    alert('User Updated Successfully');
+                    navigate('/users');
                   });
               }}
             >

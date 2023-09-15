@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Paper } from "@mui/material";
-import Button from "@mui/material/Button";
-import { API } from "../General/General";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Paper } from '@mui/material';
+import Button from '@mui/material/Button';
+import { API } from '../General/General';
 
 function Register() {
   const navigate = useNavigate();
-  const [Firstname, setFirstname] = useState("");
-  const [Lastname, setLastname] = useState("");
-  const [Role, setRole] = useState("");
-  const [email, setEmail] = useState("");
+  const [Firstname, setFirstname] = useState('');
+  const [Lastname, setLastname] = useState('');
+  const [Role, setRole] = useState('');
+  const [email, setEmail] = useState('');
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const Signup = () => {
     const loginContent = {
@@ -25,10 +25,10 @@ function Register() {
     };
     // console.log(loginContent);
     fetch(`${API}/login`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(loginContent),
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
       },
     })
       .then((response) => {
@@ -36,8 +36,8 @@ function Register() {
       })
       .then((result) => {
         // console.log(result);
-        alert("User Added Successfully");
-        navigate("/");
+        alert('User Added Successfully');
+        navigate('/');
       });
   };
 
@@ -106,10 +106,10 @@ function Register() {
               <option defaultValue="None">None</option>
               <option defaultValue="employee">employee</option>
               <option defaultValue="manager">manager</option>
-              {localStorage.getItem("usertype") === "admin" ? (
+              {localStorage.getItem('usertype') === 'admin' ? (
                 <option defaultValue="admin">admin</option>
               ) : (
-                ""
+                ''
               )}
             </select>
             <label className="form-label" htmlFor="userrole">
@@ -139,7 +139,7 @@ function Register() {
             variant="contained"
             className="col-2 mx-auto"
             onClick={() => {
-              navigate("/");
+              navigate('/');
             }}
           >
             Cancel

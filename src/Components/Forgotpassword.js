@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Button } from "@mui/material";
-import { API } from "../General/General";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import { API } from '../General/General';
+import { useNavigate } from 'react-router-dom';
 
 function Forgotpassword() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   return (
     <div>
       <div className="fs-2">Forgot Password !!</div>
@@ -27,10 +27,10 @@ function Forgotpassword() {
                   email: email,
                 };
                 fetch(`${API}/forgotpassword`, {
-                  method: "POST",
+                  method: 'POST',
                   body: JSON.stringify(data),
                   headers: {
-                    "content-type": "application/json",
+                    'content-type': 'application/json',
                   },
                 })
                   .then((response) => response.json())

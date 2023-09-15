@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { API } from "../General/General";
-import Button from "@mui/material/Button";
-import Table from "@mui/material/Table";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../General/General';
+import Button from '@mui/material/Button';
+import Table from '@mui/material/Table';
 import {
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
+} from '@mui/material';
 
 function Contact() {
   const [contacts, setContacts] = useState([]);
@@ -17,8 +17,8 @@ function Contact() {
   useEffect(() => {
     fetch(`${API}/contact/`, {
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
-        usertype: localStorage.getItem("usertype"),
+        'x-auth-token': localStorage.getItem('token'),
+        usertype: localStorage.getItem('usertype'),
       },
     })
       .then((response) => response.json())
@@ -41,7 +41,7 @@ function Contact() {
                     #
                   </TableCell>
                   <TableCell align="center" className="fw-bolder">
-                    Name{" "}
+                    Name{' '}
                   </TableCell>
                   <TableCell align="center" className="fw-bolder">
                     Company

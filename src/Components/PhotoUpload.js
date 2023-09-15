@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { API } from "../General/General";
+import React, { useState } from 'react';
+import { API } from '../General/General';
 
 function App() {
   const [image, setImage] = useState(null);
@@ -11,10 +11,10 @@ function App() {
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("file", image);
+    formData.append('file', image);
     try {
       const response = await fetch(`${API}/photo/upload`, {
-        method: "POST",
+        method: 'POST',
         body: formData,
       });
       const result = await response.json();

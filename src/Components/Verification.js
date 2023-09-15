@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Button } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
-import { API } from "../General/General";
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
+import { API } from '../General/General';
 
 function Verification() {
   const navigate = useNavigate();
-  const {id} = useParams()
-  const [rn, setRandom] = useState("");
+  const { id } = useParams();
+  const [rn, setRandom] = useState('');
   return (
     <div>
       <label>Enter ONE-TIME PASSWORD</label>
@@ -24,18 +24,18 @@ function Verification() {
               random: rn,
             };
             fetch(`${API}/verification/${id}`, {
-              method: "POST",
+              method: 'POST',
               body: JSON.stringify(data),
               headers: {
-                "content-type": "application/json",
+                'content-type': 'application/json',
               },
             })
               .then((response) => {
-                if (response.status !== 200) console.log("error");
+                if (response.status !== 200) console.log('error');
                 else response.json();
               })
               .then((result) => {
-                alert("One-time-Password matched !!!");
+                alert('One-time-Password matched !!!');
                 navigate(`/updatepassword/${id}`);
               });
           }}

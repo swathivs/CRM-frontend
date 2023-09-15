@@ -1,45 +1,45 @@
-import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
-import CircularProgress from "@mui/material/CircularProgress";
-import { Paper } from "@mui/material";
-import { API } from "../General/General";
-import { DataGrid } from "@mui/x-data-grid";
+import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import { Paper } from '@mui/material';
+import { API } from '../General/General';
+import { DataGrid } from '@mui/x-data-grid';
 
 function Service() {
   const navigate = useNavigate();
   const [services, setService] = useState([]);
-  const [status, setStatus] = useState("created");
+  const [status, setStatus] = useState('created');
 
   const columns = [
     {
-      field: "_id",
-      headerName: "Sl.no.",
+      field: '_id',
+      headerName: 'Sl.no.',
       width: 70,
     },
     {
-      field: "date",
-      headerName: "date",
+      field: 'date',
+      headerName: 'date',
       width: 180,
     },
     {
-      field: "name",
-      headerName: "name",
+      field: 'name',
+      headerName: 'name',
       width: 180,
     },
     {
-      field: "description",
-      headerName: "Description",
+      field: 'description',
+      headerName: 'Description',
       width: 200,
     },
   ];
 
   const getServices = () => {
     fetch(`${API}/service/`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
-        usertype: localStorage.getItem("usertype"),
+        'x-auth-token': localStorage.getItem('token'),
+        usertype: localStorage.getItem('usertype'),
       },
     })
       .then((response) => response.json())
@@ -60,7 +60,6 @@ function Service() {
         >
           <DataGrid
             rows={services}
-            
             getRowId={(row) => row._id}
             columns={columns}
             className="fw-bold fs-5"

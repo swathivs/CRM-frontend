@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { API } from "../General/General";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { API } from '../General/General';
 
 function Adduser() {
   const navigate = useNavigate();
-  const [Firstname, setFirstname] = useState("");
-  const [Lastname, setLastname] = useState("");
-  const [Role, setRole] = useState("");
-  const [Extn, setExtn] = useState("");
+  const [Firstname, setFirstname] = useState('');
+  const [Lastname, setLastname] = useState('');
+  const [Role, setRole] = useState('');
+  const [Extn, setExtn] = useState('');
 
   const [modalOpener, setModal] = useState(false);
   const handleClose = () => setModal(false);
   const modalStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
   };
@@ -68,10 +68,10 @@ function Adduser() {
               <option defaultValue="None">None</option>
               <option defaultValue="employee">employee</option>
               <option defaultValue="manager">manager</option>
-              {localStorage.getItem("usertype") === "admin" ? (
+              {localStorage.getItem('usertype') === 'admin' ? (
                 <option defaultValue="admin">admin</option>
               ) : (
-                ""
+                ''
               )}
             </select>
             <label htmlFor="Role" className="form-label fs-6">
@@ -103,17 +103,17 @@ function Adduser() {
             };
             setModal(true);
             fetch(`${API}/adduser`, {
-              method: "POST",
+              method: 'POST',
               body: JSON.stringify(newUser),
               headers: {
-                "Content-type": "application/json",
-                "x-auth-token": localStorage.getItem("token"),
+                'Content-type': 'application/json',
+                'x-auth-token': localStorage.getItem('token'),
               },
             })
               .then((response) => response.json())
               .then(() => {
-                alert("User Added Successfully");
-                navigate("/");
+                alert('User Added Successfully');
+                navigate('/');
               });
           }}
         >

@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { API } from "../General/General";
-import { Box, TextField } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Modal from "@mui/material/Modal";
+import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import { API } from '../General/General';
+import { Box, TextField } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Modal from '@mui/material/Modal';
 
 function Leads() {
   const navigate = useNavigate();
   const [leads, setLeads] = useState([]);
   const getLeads = () => {
     fetch(`${API}/lead/`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
-        usertype: localStorage.getItem("usertype"),
+        'x-auth-token': localStorage.getItem('token'),
+        usertype: localStorage.getItem('usertype'),
       },
     })
       .then((response) => response.json())
@@ -50,13 +50,13 @@ function Leads() {
   };
 
   const modalStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     width: 600,
-    bgcolor: "background.paper",
-    border: "2px solid #132850",
+    bgcolor: 'background.paper',
+    border: '2px solid #132850',
     boxShadow: 24,
     p: 4,
   };
@@ -193,11 +193,11 @@ function Leads() {
 }
 
 function CreateLead({ getLeads }) {
-  const [leadname, setLeadname] = useState("");
-  const [company, setCompany] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [leadsource, setLeadsource] = useState("");
+  const [leadname, setLeadname] = useState('');
+  const [company, setCompany] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [leadsource, setLeadsource] = useState('');
 
   const NewLead = () => {
     const newLeadDetails = {
@@ -209,12 +209,12 @@ function CreateLead({ getLeads }) {
     };
 
     fetch(`${API}/lead/lead`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(newLeadDetails),
       headers: {
-        "Content-type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-        usertype: localStorage.getItem("usertype"),
+        'Content-type': 'application/json',
+        'x-auth-token': localStorage.getItem('token'),
+        usertype: localStorage.getItem('usertype'),
       },
     })
       .then((response) => response.json())
@@ -229,7 +229,7 @@ function CreateLead({ getLeads }) {
       <Paper
         className="mx-auto mt-5 rounded-3 pb-3"
         elevation={6}
-        sx={{ width: "25vw" }}
+        sx={{ width: '25vw' }}
       >
         <form>
           <span className="fs-4 d-flex justify-content-center align-items-center bg-light fw-bolder pt-2 pb-2">

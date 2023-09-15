@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
-import Table from "@mui/material/Table";
-import Divider from "@mui/material/Divider";
-import CircularProgress from "@mui/material/CircularProgress";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Table from '@mui/material/Table';
+import Divider from '@mui/material/Divider';
+import CircularProgress from '@mui/material/CircularProgress';
 import {
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
-import { API } from "../General/General";
+} from '@mui/material';
+import { API } from '../General/General';
 
 function Users() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const getUsers = () => {
     fetch(`${API}/user/`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
-        usertype: localStorage.getItem("usertype"),
+        'x-auth-token': localStorage.getItem('token'),
+        usertype: localStorage.getItem('usertype'),
       },
     })
       .then((response) => response.json())
@@ -40,7 +40,7 @@ function Users() {
             <Table sx={{ minWidth: 300 }}>
               <TableHead>
                 <TableRow>
-                  {["#", "First Name", "Last Name", "Role", "Actions"].map(
+                  {['#', 'First Name', 'Last Name', 'Role', 'Actions'].map(
                     (element, index) => {
                       return (
                         <TableCell key={index} align="center">
@@ -72,7 +72,7 @@ function Users() {
                           variant="outlined"
                           onClick={() => {
                             fetch(`${API}/deleteuser/${user._id}`, {
-                              method: "DELETE",
+                              method: 'DELETE',
                             }).then(() => getUsers());
                           }}
                         >
@@ -87,14 +87,14 @@ function Users() {
           </TableContainer>
           <Divider />
           <br />
-          <Button variant="contained" onClick={() => navigate("/dashboard")}>
+          <Button variant="contained" onClick={() => navigate('/dashboard')}>
             Go Back
           </Button>
         </div>
       ) : (
         <div
           className="d-flex justify-content-center align-items-center mx-auto"
-          style={{ height: "100vh" }}
+          style={{ height: '100vh' }}
         >
           <CircularProgress size="large" />
         </div>

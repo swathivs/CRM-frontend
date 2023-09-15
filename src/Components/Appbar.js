@@ -1,29 +1,29 @@
-import * as React from "react";
-import { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import { LinkStyling } from "../General/General";
-import useMediaquery from "../hooks/UseMediaquery";
-import { GridMoreVertIcon } from "@mui/x-data-grid";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import * as React from 'react';
+import { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+import { LinkStyling } from '../General/General';
+import useMediaquery from '../hooks/UseMediaquery';
+import { GridMoreVertIcon } from '@mui/x-data-grid';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 export default function Appbar() {
   const [isMenuToggled, setMenuToggled] = useState(false);
-  const isDesktop = useMediaquery("(min-width:768px)");
+  const isDesktop = useMediaquery('(min-width:768px)');
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       {isDesktop ? (
-        <AppBar position="static" sx={{ backgroundColor: "#132850" }}>
+        <AppBar position="static" sx={{ backgroundColor: '#132850' }}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              CRM Web app
+              CRM application
             </Typography>
-            {window.location.pathname == "/" && (
+            {window.location.pathname === '/' && (
               <Button color="inherit">Login</Button>
             )}
             <span>
@@ -31,7 +31,7 @@ export default function Appbar() {
                 <Button color="inherit">DASHBOARD</Button>
               </Link>
               <Link to="/adduser" style={LinkStyling}>
-                {localStorage.getItem("usertype") === "admin" && (
+                {localStorage.getItem('usertype') === 'admin' && (
                   <Button color="inherit">Add User</Button>
                 )}
               </Link>
@@ -39,7 +39,7 @@ export default function Appbar() {
                 color="inherit"
                 onClick={() => {
                   localStorage.clear();
-                  window.location.href = "/";
+                  window.location.href = '/';
                 }}
               >
                 Logout
@@ -48,7 +48,7 @@ export default function Appbar() {
           </Toolbar>
         </AppBar>
       ) : (
-        <AppBar position="static" sx={{ backgroundColor: "#132850" }}>
+        <AppBar position="static" sx={{ backgroundColor: '#132850' }}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               CRM Web app
@@ -56,7 +56,7 @@ export default function Appbar() {
             <Button onClick={() => setMenuToggled(!isMenuToggled)}>
               <GridMoreVertIcon />
             </Button>
-            {window.location.pathname == "/" && (
+            {window.location.pathname === '/' && (
               <Button color="inherit">Login</Button>
             )}
             {!isDesktop && !isMenuToggled && (
@@ -76,7 +76,7 @@ export default function Appbar() {
                     <Button color="inherit">DASHBOARD</Button>
                   </Link>
                   <Link to="/adduser" style={LinkStyling}>
-                    {localStorage.getItem("usertype") === "admin" && (
+                    {localStorage.getItem('usertype') === 'admin' && (
                       <Button color="inherit">Add User</Button>
                     )}
                   </Link>
@@ -84,7 +84,7 @@ export default function Appbar() {
                     color="inherit"
                     onClick={() => {
                       localStorage.clear();
-                      window.location.href = "/";
+                      window.location.href = '/';
                     }}
                   >
                     Logout
